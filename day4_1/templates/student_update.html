@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="{% url 'student:student_update' student.id%}" method="post">
+    {% csrf_token %}
+    姓名:<input type="text" value="{{ student.name }}" name="stuname"><br>
+    年龄:<input type="text" value="{{ student.age }}" name="stuage"><br>
+    性别<input type="text" value="{{ student.gender }}" name="stugender"><br>
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>

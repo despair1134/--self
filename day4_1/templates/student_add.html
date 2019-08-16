@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加学生信息</title>
+</head>
+<body>
+<form action="{% url 'student:student_add' %}" method="post">
+    {% csrf_token %}
+    姓名:<input type="text" name="stuname"><br>
+    年龄:<input type="text" name="stuage"><br>
+    性别:
+    <select name="stugender">
+        <option value="girl">女</option>
+        <option value="boy">男</option>
+    </select>
+    <br>
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>

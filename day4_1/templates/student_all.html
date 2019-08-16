@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        th{
+            float: left;
+        }
+        td{
+            border: #c3c3c3 solid 1px;
+
+        }
+        tr{
+             border: #c3c3c3 solid 1px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<p>所有学生信息 <a href="/">返回首页</a></p>
+<table>
+    <th>
+        <td>序号</td>
+        <td>姓名</td>
+        <td>年龄</td>
+        <td>性别</td>
+        <td>操作</td>
+    </th>
+    {% for student in all_students %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.age }}</td>
+            <td>{{ student.gender }}</td>
+            <td>
+                <a href="{% url 'student:student_del' student.id %}">删除</a>
+                <a href="{% url 'student:student_update' student.id %}">修改</a>
+            </td>
+        </tr>
+    {% endfor %}
+
+</table>
+</body>
+</html>
