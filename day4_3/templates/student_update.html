@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="{% url 'student:student_update' student.id %}" method="post">
+    {% csrf_token %}
+    班级:
+    <select name="stuban">
+        {% for ban in all_bans %}
+                <option {% if ban.banid == student.ban.banid %} selected {% endif %}>{{ ban.banid }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    学号:<input type="text" name="stuid" value="{{ student.studentid.stuid }}"><br>
+    姓名:<input type="text" name="stuname" value="{{ student.name }}"><br>
+    年龄:<input type="text" name="stuage" value="{{ student.age }}"><br>
+    性别:<input type="text" name="stugender" value="{{ student.gender }}"><br>
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>

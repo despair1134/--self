@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查看所有学生</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>序号</th>
+        <th>班级</th>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>性别</th>
+        <th>操作</th>
+    </tr>
+    {% for student in all_students %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ student.ban.banid }}</td>
+            <td>{{ student.studentid.stuid }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.age }}</td>
+            <td>{{ student.gender }}</td>
+            <td>
+                <a href="{% url 'student:student_delete' student.id %}">删除</a>
+                <a href="{% url 'student:student_update' student.id %}">修改</a>
+            </td>
+        </tr>
+    {% endfor %}
+
+</table>
+</body>
+</html>
