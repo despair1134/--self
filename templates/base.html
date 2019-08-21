@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<!--[if lt IE 7 ]><html lang="en" class="ie6 ielt7 ielt8 ielt9"><![endif]--><!--[if IE 7 ]><html lang="en" class="ie7 ielt8 ielt9"><![endif]--><!--[if IE 8 ]><html lang="en" class="ie8 ielt9"><![endif]--><!--[if IE 9 ]><html lang="en" class="ie9"> <![endif]--><!--[if (gt IE 9)|!(IE)]><!--> 
+<html lang="en"><!--<![endif]--> 
+	<head>
+		<meta charset="utf-8">
+		<title>Dashboard - Akira</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+		<link href="{% static 'css/bootstrap-responsive.min.css' %}" rel="stylesheet">
+		<link href="{% static 'css/site.css' %}" rel="stylesheet">
+		<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	</head>
+	<body>
+		<div class="container">
+			<div class="navbar">
+				<div class="navbar-inner">
+					<div class="container">
+						<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
+                        <a class="brand" href="#">atguigu</a>
+						<div class="nav-collapse">
+							<ul class="nav pull-right">
+                                {% if request.user.is_authenticated %}
+                                <li>
+									<a href="#">{{ request.user.username }}</a>
+								</li>
+								<li>
+									<a href="{% url 'user:user_logout' %}">退出</a>
+								</li>
+                                {% else %}
+								<li>
+									<a href="{% url 'user:user_login' %}">登录</a>
+								</li>
+								<li>
+									<a href="{% url 'user:user_register' %}">注册</a>
+								</li>
+                                {% endif %}
+
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span3">
+					<div class="well" style="padding: 8px 0;">
+						<ul class="nav nav-list">
+							<li class="nav-header">
+                                精英管理
+							</li>
+							<li class="active">
+								<a href="{% url 'student:student_all' %}"><i class="icon-white icon-home"></i> 查看学生</a>
+							</li>
+							<li>
+								<a href="{% url 'student:student_add' %}"><i class="icon-folder-open"></i> 增加学生</a>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+                {% block sp9 %}
+                    我这里可以变化
+                {% endblock %}
+			</div>
+		</div>
+		<script src="{% static 'js/jquery.min.js' %}"></script>
+		<script src="{% static 'js/bootstrap.min.js' %}"></script>
+		<script src="{% static 'js/site.js' %}"></script>
+	</body>
+</html>
