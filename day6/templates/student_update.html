@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block sp9 %}
+	<div class="span9">
+					<h1>
+						硅谷精英修改
+					</h1>
+					<form id="edit-profile" class="form-horizontal" action="{% url 'student:student_update' student.id %}" method="post">
+                        {% csrf_token %}
+						<fieldset>
+							<legend>精英详情</legend>
+							<div class="control-group">
+								<label class="control-label" for="input01">姓名</label>
+								<div class="controls">
+									<input type="text" class="input-xlarge" id="input01" value="{{ student.name }}" name="stuname"/>
+								</div>
+							</div>
+                            <div class="control-group">
+								<label class="control-label" for="input01">班级</label>
+								<div class="controls">
+                                    <select name="stuban">
+                                        {% for ban in all_bans %}
+                                            <option {% if student.ban.id == ban.id %}selected{% endif %}>{{ ban.banname }}</option>
+                                        {% endfor %}
+                                    </select>
+								</div>
+							</div>
+                            <div class="control-group">
+								<label class="control-label" for="input01">年龄</label>
+								<div class="controls">
+									<input type="text" class="input-xlarge" id="input01" value="{{ student.age }}" name="stuage"/>
+								</div>
+							</div>
+
+                            <div class="control-group">
+								<label class="control-label" for="input01">性别</label>
+								<div class="controls">
+									<input type="text" class="input-xlarge" id="input01" value="{{ student.gender }}" name="stugender"/>
+								</div>
+							</div>
+
+                             <div class="control-group">
+								<label class="control-label" for="input01">学号</label>
+								<div class="controls">
+									<input type="text" class="input-xlarge" id="input01" value="{{ student.studentid.stuid }}" name="stuuid"/>
+								</div>
+							</div>
+
+							<div class="form-actions">
+								<button type="submit" class="btn btn-primary">修改</button>
+                                <a class="btn" href="{% url 'student:student_all' %}">返回</a>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+{% endblock %}
